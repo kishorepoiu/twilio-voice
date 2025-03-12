@@ -10,7 +10,7 @@ app.get("/", (req, res) => {
   res.send("Twilio Voice App is running! 🚀");
 });
 
-// Handle incoming voice calls from Twilio
+// Twilio webhook for voice calls
 app.post("/voice", (req, res) => {
   const response = new twiml.VoiceResponse();
   response.say("Hello world!");
@@ -19,8 +19,5 @@ app.post("/voice", (req, res) => {
   res.send(response.toString());
 });
 
-// Start the server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+// Export for Vercel
+module.exports = app;
